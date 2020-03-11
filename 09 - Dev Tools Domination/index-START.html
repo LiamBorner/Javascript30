@@ -6,40 +6,86 @@
 </head>
 <body>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+  <p onClick="makeOrange()">×BREAK×DOWN×</p>
 
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }, { name: 'Rex', age: 3 }];
 
-    function makeGreen() {
+    function makeOrange() {
       const p = document.querySelector('p');
-      p.style.color = '#BADA55';
+      p.style.color = '#FF4500';
       p.style.fontSize = '50px';
     }
 
     // Regular
-
+    
+    console.log('Hello world');
     // Interpolated
 
+    console.log('Hello, this is an interpolated %s', 'string');
+    
     // Styled
 
+    console.log('%c Hello, this text is big!', 'font-size: 50px;');
     // warning!
 
+    console.warn('Send help');
     // Error :|
 
+    console.error('Something is broken');
     // Info
 
+    console.info('Flamingo knees are actually their ankles');
+
     // Testing
+    const p = document.queryCommandValue('p');
+
+    // console.assert(p.classList.contains('ouch'), 'That is wrong');
+
 
     // clearing
+    // console.clear();
 
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
 
     // counting
 
+    console.count('Heads');
+    console.count('Shoulders');
+    console.count('Knees');
+    console.count('Toes');
+    console.count('Heads');
+    console.count('Heads');
+    console.count('Toes');
+    console.count('Knees');
+    console.count('Heads');
+    console.count('Toes');
+
+
     // timing
+
+    console.time('fetching data');
+    fetch('https://api.github.com/users/liamborner')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+      console.table(dogs);
+
 
   </script>
 </body>
