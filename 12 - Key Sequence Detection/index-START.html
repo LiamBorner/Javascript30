@@ -6,7 +6,33 @@
   <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
 <body>
+  <p id="target"></p>
+
+
 <script>
+  const pressed = [];
+  const secretCode = 'rosebud';
+
+
+  window.addEventListener('keyup', (e) => {
+    console.log(e.key);
+    pressed.push(e.key);
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+    if (pressed.join('').includes(secretCode)){
+      console.log('THIS IS THE SECRET CODE');
+      // cornify_add();
+      document.getElementById('target').textContent = 'Congrats, you now have 1000 Simoleons!';
+
+    }  
+    console.log(pressed);
+
+  });
+
+  
+
+   
+
+
 </script>
 </body>
 </html>
