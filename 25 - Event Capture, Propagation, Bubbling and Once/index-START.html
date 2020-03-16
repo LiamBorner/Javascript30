@@ -9,6 +9,7 @@
   <div class="one">
     <div class="two">
       <div class="three">
+        <button>Click</button>
       </div>
     </div>
   </div>
@@ -42,6 +43,39 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button')
+
+  function logText(e) {
+    console.log(this.classList.value);
+    // e.stopPropagation();
+    //this stops the event bubbling up
+  }
+
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false,
+    //true runs the function on the way down (like css), rather than on the way up
+    //without capture, bubbling occurs which runs runs from bottom up
+    //eg click on nested div3 logs div3>div2>div1>bod
+    //capture event logs bod>div1>div2>div3
+    once: false
+    //listens for a click once and then unbinds itself until page is re-run
+  }));
+
+  
+
+
+    button.addEventListener('click', () => {
+      console.log('Click');
+    }, {
+      once: true
+    });
+    //used when you only want user to click checkout button once
+    
+
+    
+  
 
 </script>
 </body>
